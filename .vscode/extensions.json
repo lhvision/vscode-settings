@@ -1,0 +1,51 @@
+{
+  "recommendations": [
+    // antfu extensions, ofc :P
+    "antfu.browse-lite",
+    "antfu.iconify",
+    "antfu.slidev",
+    "antfu.unocss",
+    "antfu.vite",
+    "antfu.where-am-i",
+    "lokalise.i18n-ally",
+
+    // themes & icons
+    "antfu.icons-carbon",
+    "antfu.theme-vitesse",
+    "vscode-icons-team.vscode-icons",
+
+    // life savers!
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "vue.volar",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+
+    // node
+    "leizongmin.node-module-intellisense",
+    "christian-kohler.npm-intellisense",
+    "mikestead.dotenv",
+
+    // up to you
+    "amodio.tsl-problem-matcher",
+    "eamodio.gitlens",
+    "EditorConfig.EditorConfig",
+    "GitHub.vscode-pull-request-github",
+    "mpontus.tab-cycle",
+    "naumovs.color-highlight",
+    "richie5um2.vscode-sort-json",
+    "unional.vscode-sort-package-json",
+    "znck.grammarly",
+    "oderwat.indent-rainbow",
+    "kisstkondoros.vscode-gutter-preview",
+    "cschlosser.doxdocgen",
+    "pranaygp.vscode-css-peek",
+    "clinyong.vscode-css-modules",
+    "jock.svg",
+    "github.vscode-github-actions",
+
+    // AI
+    // "aminer.codegeex",
+    // "GitHub.copilot",
+  ]
+}
