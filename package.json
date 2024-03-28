@@ -1,6 +1,6 @@
 {
   "name": "@lhvision/vscode-settings",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A tool to automatically add VSCode settings to your project",
   "main": "index.js",
   "bin": {
