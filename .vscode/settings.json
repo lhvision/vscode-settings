@@ -1,4 +1,5 @@
 {  
+  "vite.autoStart": false,
   // ========== Visuals ==========
   "editor.cursorSmoothCaretAnimation": "on",
   // "editor.fontFamily": "Input Mono, monospace",

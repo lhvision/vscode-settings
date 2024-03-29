@@ -1,6 +1,6 @@
 <div align="center">
 
-  [![Ameth](https://raw.githubusercontent.com/lhvision/vscode-settings/main/images/Ameth.png)](https://github.com/lhvision/vscode-settings)
+  [![Ameth](https://raw.githubusercontent.com/lhvision/lhvision/main/images/Ameth.png)](https://github.com/lhvision/vscode-settings)
 
 # @lhvision/vscode-settings
 

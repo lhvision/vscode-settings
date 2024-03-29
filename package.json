@@ -1,7 +1,7 @@
 {
   "name": "@lhvision/vscode-settings",
   "type": "module",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "description": "A tool to automatically add VSCode settings to your project",
   "main": "./index.js",
   "bin": "./bin/index.js",
@@ -11,10 +11,7 @@
   "files": [
     "bin",
     "index.js",
-    "LICENSE",
-    ".vscode",
-    "README.md",
-    "package.json"
+    ".vscode"
   ],
   "repository": {
     "type": "git",

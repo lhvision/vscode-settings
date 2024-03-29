@@ -1,13 +1,13 @@
-import { fileURLToPath } from "url";
+import { fileURLToPath } from "node:url";
 import {
   copyFile,
   mkdirSync,
   readdirSync,
   existsSync,
   writeFileSync,
-} from "fs";
-import { join, extname as _extname } from "path";
-import { promisify } from "util";
+} from "node:fs";
+import { join, extname as _extname } from "node:path";
+import { promisify } from "node:util";
 
 // 获取当前模块的绝对路径
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
@@ -20,35 +20,36 @@ async function copyDirAsync(configDir, vscodeDir) {
     mkdirSync(vscodeDir, { recursive: true });
     const entries = readdirSync(configDir, { withFileTypes: true });
 
-    for (const entry of entries) {
-      const srcPath = join(configDir, entry.name);
-      const destPath = join(vscodeDir, entry.name);
-
-      if (entry.isDirectory()) {
-        await copyDirAsync(srcPath, destPath);
-      } else {
-        if (existsSync(destPath)) {
-          // 获取文件后缀
-          const extname = _extname(destPath);
-          const backupFileName = entry.name.replace(
-            extname,
-            extname ? `_backup${extname}` : ""
-          );
-          const backupFilePath = join(vscodeDir, backupFileName);
-          // 不存在则创建一个备份文件
-          if (!existsSync(backupFilePath)) {
-            writeFileSync(backupFilePath, "");
+    await Promise.all(
+      entries.map(async entry => {
+        const srcPath = join(configDir, entry.name);
+        const destPath = join(vscodeDir, entry.name);
+        if (entry.isDirectory()) {
+          await copyDirAsync(srcPath, destPath);
+        } else {
+          if (existsSync(destPath)) {
+            // 获取文件后缀
+            const extname = _extname(destPath);
+            const backupFileName = entry.name.replace(
+              extname,
+              extname ? `_backup${extname}` : ''
+            );
+            const backupFilePath = join(vscodeDir, backupFileName);
+            // 不存在则创建一个备份文件
+            if (!existsSync(backupFilePath)) {
+              writeFileSync(backupFilePath, '');
+            }
+            await copyFilePromise(destPath, backupFilePath);
+            console.log(
+              `${vscodeDir} 下 ${entry.name} 已备份为 ${backupFileName}`
+            );
           }
-          await copyFilePromise(destPath, backupFilePath);
-          console.log(
-            `${vscodeDir} 下 ${entry.name} 已备份为 ${backupFileName}`
-          );
+          await copyFilePromise(srcPath, destPath);
+          console.log(`Copied file: ${entry.name}`);
         }
-        await copyFilePromise(srcPath, destPath);
-        console.log(`Copied file: ${entry.name}`);
-      }
-    }
-    console.log("VSCode settings copied successfully!");
+      })
+    );
+    console.log('VSCode settings copied successfully!');
   } catch (e) {
     console.error(`Error occurred during directory copy: ${e.message}`);
   }
@@ -65,4 +66,4 @@ async function handleConfigs(vscodeDir, configDir) {
   }
 }
 
-handleConfigs(join(process.cwd(), ".vscode"), join(__dirname, ".vscode"));
+handleConfigs(join(process.cwd(), '.vscode'), join(__dirname, '.vscode'));
