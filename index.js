@@ -1,23 +1,16 @@
 import { fileURLToPath } from "node:url";
-import {
-  copyFile,
-  mkdirSync,
-  readdirSync,
-  existsSync,
-  writeFileSync,
-} from "node:fs";
+import { mkdirSync, readdirSync, existsSync, writeFileSync } from "node:fs";
+import { copyFile } from "node:fs/promises";
 import { join, extname as _extname } from "node:path";
-import { promisify } from "node:util";
 
 // 获取当前模块的绝对路径
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 
-// 转换为 promise 版本
-const copyFilePromise = promisify(copyFile);
-
 async function copyDirAsync(configDir, vscodeDir) {
   try {
-    mkdirSync(vscodeDir, { recursive: true });
+    if (!existsSync(vscodeDir)) {
+      mkdirSync(vscodeDir, { recursive: true });
+    }
     const entries = readdirSync(configDir, { withFileTypes: true });
 
     await Promise.all(
@@ -39,12 +32,12 @@ async function copyDirAsync(configDir, vscodeDir) {
             if (!existsSync(backupFilePath)) {
               writeFileSync(backupFilePath, '');
             }
-            await copyFilePromise(destPath, backupFilePath);
+            await copyFile(destPath, backupFilePath);
             console.log(
               `${vscodeDir} 下 ${entry.name} 已备份为 ${backupFileName}`
             );
           }
-          await copyFilePromise(srcPath, destPath);
+          await copyFile(srcPath, destPath);
           console.log(`Copied file: ${entry.name}`);
         }
       })
