@@ -29,3 +29,9 @@ npx @lhvision/vscode-settings
 ```bash
 npm i -g @lhvision/vscode-settings
 ```
+
+### Flags
+```bash
+--not-backup, -n      Do not backup the original files
+--help, -h            Show this help message
+```
