@@ -73,7 +73,7 @@ function colorLog(message, type = 'info') {
       break;
   }
 
-  console.log(color, message, colorANSIMap.reset);
+  console.log(`${color}${message}${colorANSIMap.reset}`);
 }
 
 async function copyDirAsync(configDir, vscodeDir) {

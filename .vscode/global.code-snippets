@@ -141,7 +141,7 @@
       "      break;",
       "  }",
       "",
-      "  console.log(color, message, colorANSIMap.reset);",
+      "  console.log(`\\${color}\\${message}${colorANSIMap.reset}`);",
       "}",
     ],
     "description": "Inserts a function for printing colored logs"
