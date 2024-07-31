@@ -198,6 +198,12 @@
   "iconify.inplace": true,
   "svg.preview.mode": "svg",
 
+  // I only use Prettier for manually formatting
+  "prettier.enable": false,
+  "prettier.printWidth": 200,
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+
   // ========== File Nesting ==========
   // this might not be up to date with the repo, please check yourself
   // https://github.com/antfu/vscode-file-nesting-config
