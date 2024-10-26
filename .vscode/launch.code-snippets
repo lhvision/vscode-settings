@@ -1,0 +1,51 @@
+{
+	// Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	"debug-vite": {
+		"scope": "json,jsonc",
+    "prefix": "debug-vite",
+		"body": [
+			"{",
+			"  \"type\": \"chrome\",",
+			"  \"request\": \"launch\",",
+			"  \"name\": \"debug-vite\",",
+			"  \"skipFiles\": [",
+			"    \"<node_internals>/**\"",
+			"  ],",
+			"  \"runtimeExecutable\": \"canary\",",
+			"  \"runtimeArgs\": [",
+			"    \"--auto-open-devtools-for-tabs\"",
+			"  ],",
+			"  \"userDataDir\": false,",
+			"  \"url\": \"http://localhost:${1:4000}\",",
+			"  \"webRoot\": \"\\${workspaceFolder}/aaa\"",
+			"}"
+		],
+		"description": "调试 vite 项目"
+	},
+	"debug-js": {
+		"scope": "json,jsonc",
+		"prefix": "debug-js",
+		"body": [
+			"{",
+			"  \"type\": \"node\",",
+			"  \"request\": \"launch\",",
+			"  \"name\": \"debug-js\",",
+			"  \"skipFiles\": [",
+			"    \"<node_internals>/**\"",
+			"  ],",
+			"  \"console\": \"integratedTerminal\",",
+			"  \"program\": \"\\${workspaceFolder}/${1:debug.js}\",",
+			"  \"outFiles\": [",
+			"    \"\\${workspaceFolder}/**/*.js\"",
+			"  ],",
+			"  \"args\": []",
+			"}"
+		],
+		"description": "调试 js 代码"
+	}
+}
