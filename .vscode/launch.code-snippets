@@ -21,8 +21,7 @@
 			"    \"--auto-open-devtools-for-tabs\"",
 			"  ],",
 			"  \"userDataDir\": false,",
-			"  \"url\": \"http://localhost:${1:4000}\",",
-			"  \"webRoot\": \"\\${workspaceFolder}/aaa\"",
+			"  \"url\": \"http://localhost:${1:5173}\",",
 			"}"
 		],
 		"description": "调试 vite 项目"
